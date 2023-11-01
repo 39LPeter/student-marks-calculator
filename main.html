@@ -4,21 +4,43 @@
     <title> kca Grade Calculator</title>
     <style>
         body{
-            background-color: blueviolet;
+            background-color: #182b5c;
             font-family: Georgia, 'Times New Roman', Times, serif;
             font-size: medium;
             font-style: oblique;
             font-weight: lighter;
+            
+            
         }
-        h1{
-animation: alternate-reverse;
-animation-duration: 5s;
-animation-iteration-count: infinite;
-        }
+       /* Define a keyframe animation for the glow effect */
+@keyframes glow {
+    0% {
+        text-shadow: 0 0 10px #f80764; /* Initial glow color and radius */
+    }
+    50% {
+        text-shadow: 0 0 20px #f80764; /* Intensify the glow at the midpoint of the animation */
+    }
+    100% {
+        text-shadow: 0 0 10px #f80764; /* Return to the initial glow */
+    }
+}
+
+/* Apply the animation to the .glow-heading class */
+.glow-heading{
+    font-size: 36px; /* Adjust the font size as needed */
+    color: darkgoldenrod; /* Set the text color */
+    animation: glow 2s linear infinite; /* Apply the glow animation */
+}
+h1{
+    text-align: center;
+    
+}
+
     </style>
 </head>
 <body>
-    <h1>KCA  University Students Grade Calculator</h1>
+    <img src="data:image/jpeg;base64,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" alt="">
+    <h1 class="glow-heading">KCA  University Students Grade Calculator</h1>
 
     <form id="gradeForm">
         <table>
