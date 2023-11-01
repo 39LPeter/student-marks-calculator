@@ -37,6 +37,37 @@ h1{
     
 }
 
+/* Define a keyframe animation for the shaking effect */
+@keyframes shake {
+    0% {
+        transform: translateX(0); /* Initial position */
+    }
+    25% {
+        transform: translateX(-5px); /* Move to the left */
+    }
+    50% {
+        transform: translateX(5px); /* Move to the right */
+    }
+    75% {
+        transform: translateX(-5px); /* Move to the left again */
+    }
+    100% {
+        transform: translateX(0); /* Return to the initial position */
+    }
+}
+
+/* Apply the animation to the .shake-button class */
+.shake-button {
+    font-size: 16px; /* Adjust the font size as needed */
+    padding: 10px 20px; /* Adjust the button's size as needed */
+    background-color: #0074D9; /* Button background color */
+    color: #FFF; /* Button text color */
+    border: none; /* Remove button border */
+    cursor: pointer; /* Show pointer cursor on hover */
+    animation: shake 0.5s ease infinite; /* Apply the shake animation */
+}
+
+
     </style>
 </head>
 <body>
@@ -104,7 +135,7 @@ h1{
             </tr>
 
         </table>
-        <button type="button" onclick="calculateGrades()">Calculate Grades</button>
+        <button type="button" class="shake-button" onclick="calculateGrades()">Calculate Grades</button>
     </form>
 
     <div id="result"></div>
