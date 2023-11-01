@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Grade Calculator</title>
+</head>
+<body>
+    <h1>Grade Calculator</h1>
+
+    <form id="gradeForm">
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Assignment 1</th>
+                <th>Assignment 2</th>
+                <th>Cat</th>
+                <th>Final Exam</th>
+            </tr>
+            <!-- Input fields for 20 students -->
+            <tr>
+                <td><input type="text" name="name[]" required></td>
+                <td><input type="number" name="assignment1[]" required></td>
+                <td><input type="number" name="assignment2[]" required></td>
+                <td><input type="number" name="cat[]" required></td>
+                <td><input type="number" name="finalExam[]" required></td>
+            </tr>
+            <!-- Repeat the above row for 19 more students -->
+        </table>
+        <button type="button" onclick="calculateGrades()">Calculate Grades</button>
+    </form>
+
+    <div id="result"></div>
+
+    <script>
+        function calculateGrades() {
+            try {
+                const gradeForm = document.getElementById('gradeForm');
+                const formData = new FormData(gradeForm);
+                const students = [];
+
+                // Loop through the form data and calculate the total score and grade for each student
+                for (let i = 0; i < formData.getAll('name[]').length; i++) {
+                    const name = formData.getAll('name[]')[i];
+                    const assignment1 = parseFloat(formData.getAll('assignment1[]')[i]);
+                    const assignment2 = parseFloat(formData.getAll('assignment2[]')[i]);
+                    const cat = parseFloat(formData.getAll('cat[]')[i]);
+                    const finalExam = parseFloat(formData.getAll('finalExam[]')[i]);
+
+                    // Check for valid numerical inputs
+                    if (isNaN(assignment1) || isNaN(assignment2) || isNaN(cat) || isNaN(finalExam)) {
+                        throw new Error('Invalid input. Please enter numerical values for marks.');
+                    }
+
+                    const totalScore = assignment1 + assignment2 + cat + finalExam;
+                    let grade = '';
+
+                    if (totalScore >= 80) {
+                        grade = 'A';
+                    } else if (totalScore >= 60) {
+                        grade = 'B';
+                    } else if (totalScore >= 40) {
+                        grade = 'C';
+                    } else {
+                        grade = 'F';
+                    }
+
+                    students.push({ name, totalScore, grade });
+                }
+
+                // Display the results
+                const resultDiv = document.getElementById('result');
+                resultDiv.innerHTML = '<h2>Student Grades:</h2>';
+                students.forEach(student => {
+                    resultDiv.innerHTML += `<p>Name: ${student.name}, Total Score: ${student.totalScore}, Grade: ${student.grade}</p>`;
+                });
+            } catch (error) {
+                alert('An error occurred: ' + error.message);
+            }
+        }
+    </script>
+</body>
+</html>
