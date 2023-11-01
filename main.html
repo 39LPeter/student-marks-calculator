@@ -1,29 +1,71 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Grade Calculator</title>
+    <title>Student Grade Calculator</title>
 </head>
 <body>
-    <h1>Grade Calculator</h1>
+    <h1>Student Grade Calculator</h1>
 
     <form id="gradeForm">
         <table>
             <tr>
                 <th>Name</th>
-                <th>Assignment 1</th>
-                <th>Assignment 2</th>
-                <th>Cat</th>
-                <th>Final Exam</th>
+                <th>Assignment 1 (out of 10)</th>
+                <th>Assignment 2 (out of 10)</th>
+                <th>CAT (out of 30)</th>
+                <th>Final Exam (out of 50)</th>
             </tr>
             <!-- Input fields for 20 students -->
             <tr>
                 <td><input type="text" name="name[]" required></td>
-                <td><input type="number" name="assignment1[]" required></td>
-                <td><input type="number" name="assignment2[]" required></td>
-                <td><input type="number" name="cat[]" required></td>
-                <td><input type="number" name="finalExam[]" required></td>
+                <td><input type="number" name="assignment1[]" min="0" max="10" required></td>
+                <td><input type="number" name="assignment2[]" min="0" max="10" required></td>
+                <td><input type="number" name="cat[]" min="0" max="30" required></td>
+                <td><input type="number" name="finalExam[]" min="0" max="50" required></td>
             </tr>
-            <!-- Repeat the above row for 19 more students -->
+            <tr>
+                <td><input type="text" name="name[]" required></td>
+                <td><input type="number" name="assignment1[]" min="0" max="10" required></td>
+                <td><input type="number" name="assignment2[]" min="0" max="10" required></td>
+                <td><input type="number" name="cat[]" min="0" max="30" required></td>
+                <td><input type="number" name="finalExam[]" min="0" max="50" required></td>
+            </tr>
+            <tr>
+                <td><input type="text" name="name[]" required></td>
+                <td><input type="number" name="assignment1[]" min="0" max="10" required></td>
+                <td><input type="number" name="assignment2[]" min="0" max="10" required></td>
+                <td><input type="number" name="cat[]" min="0" max="30" required></td>
+                <td><input type="number" name="finalExam[]" min="0" max="50" required></td>
+            </tr>
+            <tr>
+                <td><input type="text" name="name[]" required></td>
+                <td><input type="number" name="assignment1[]" min="0" max="10" required></td>
+                <td><input type="number" name="assignment2[]" min="0" max="10" required></td>
+                <td><input type="number" name="cat[]" min="0" max="30" required></td>
+                <td><input type="number" name="finalExam[]" min="0" max="50" required></td>
+            </tr>
+            <tr>
+                <td><input type="text" name="name[]" required></td>
+                <td><input type="number" name="assignment1[]" min="0" max="10" required></td>
+                <td><input type="number" name="assignment2[]" min="0" max="10" required></td>
+                <td><input type="number" name="cat[]" min="0" max="30" required></td>
+                <td><input type="number" name="finalExam[]" min="0" max="50" required></td>
+            </tr>
+            <tr>
+                <td><input type="text" name="name[]" required></td>
+                <td><input type="number" name="assignment1[]" min="0" max="10" required></td>
+                <td><input type="number" name="assignment2[]" min="0" max="10" required></td>
+                <td><input type="number" name="cat[]" min="0" max="30" required></td>
+                <td><input type="number" name="finalExam[]" min="0" max="50" required></td>
+            </tr>
+            <tr>
+                <td><input type="text" name="name[]" required></td>
+                <td><input type="number" name="assignment1[]" min="0" max="10" required></td>
+                <td><input type="number" name="assignment2[]" min="0" max="10" required></td>
+                <td><input type="number" name="cat[]" min="0" max="30" required></td>
+                <td><input type="number" name="finalExam[]" min="0" max="50" required></td>
+            </tr>
+             
         </table>
         <button type="button" onclick="calculateGrades()">Calculate Grades</button>
     </form>
@@ -50,7 +92,7 @@
                         throw new Error('Invalid input. Please enter numerical values for marks.');
                     }
 
-                    const totalScore = assignment1 + assignment2 + cat + finalExam;
+                    const totalScore = (assignment1 / 10 * 10) + (assignment2 / 10 * 10) + (cat / 30 * 30) + (finalExam / 50 * 50);
                     let grade = '';
 
                     if (totalScore >= 80) {
